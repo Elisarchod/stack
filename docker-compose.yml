@@ -1,6 +1,77 @@
 version: '3.6'
 services:
-  python_testim:
-    container_name: python_testim
-    image: python:3.10.4-slim-buster
+  flask:
+    container_name: flask
+    build: /services/flask/.
     restart: unless-stopped
+    ports:
+      - 8084:8080
+
+  csv-wrangler:
+    container_name: csv-wrangler
+    build: /services/csv-wrangler/.
+    restart: unless-stopped
+    ports:
+      - 8085:8501
+
+  homer:
+    image: b4bz/homer
+    container_name: homer
+    volumes:
+      - /volumes/homer/assets:/www/assets
+      - /services/flask:/www/flask
+      - /services/csv-wrangler/:/www/csv-wrangler/
+    ports:
+      - 8082:8080
+    user: 1000:1000
+    environment:
+      - INIT_ASSETS=0
+      
+  syncthing:
+    image: linuxserver/syncthing:latest
+    container_name: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - HOME=/app
+      - TZ=${TZ}
+    volumes:
+      - /volumes/syncthing/config:/config
+      - /volumes/syncthing/data:/app
+    ports:
+      - 8384:8384 # Web UI
+      - 22000:22000/tcp # TCP file transfers
+      - 22000:22000/udp # QUIC file transfers
+      - 21027:21027/udp # Receive local discovery broadcasts
+    network_mode: host
+    
+  nextcloud:
+    container_name: nextcloud
+    image: nextcloud
+    restart: unless-stopped
+    environment:
+    - MYSQL_HOST=nextcloud_db
+    - MYSQL_PASSWORD=IOtSt4ckmySqlDbPw
+    - MYSQL_DATABASE=nextcloud
+    - MYSQL_USER=nextcloud
+    ports:
+    - 9321:80
+    volumes:
+#    - ./volumes/nextcloud/html:/var/www/html
+    - /mnt/elements_main/torrent/incomplet_test:/var/www/html
+#    depends_on:
+#    - nextcloud_db
+    networks:
+    - default
+    - nextcloud
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+  nextcloud:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
