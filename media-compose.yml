@@ -7,14 +7,14 @@ services:
     - PUID=1000
     - PGID=1000
     - UMASK_SET=022
-    - WEBUI_PORT=15080
+    - WEBUI_PORT=15082
     volumes:
     - /volumes/qbittorrent/config:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
     - 6882:6881
     - 6882:6881/udp
-    - 15082:15080
+    - 15082:15082
     - 1082:1080
     
   sickchill:
