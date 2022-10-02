@@ -32,7 +32,13 @@ services:
     ports:
       - 8081:8081
     restart: unless-stopped
-    
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      
 #   nas:
 #     image: dperson/samba
 #     container_name: samba
