@@ -33,21 +33,21 @@ services:
       - 8081:8081
     restart: unless-stopped
     
-  nas:
-    image: dperson/samba
-    container_name: samba
-    environment:
-      TZ: ${TZ}
-    networks:
-      - default
-    ports:
-      - 139:139
-      - 445:445
-    tmpfs:
-      - /tmp
-    restart: unless-stopped
-    stdin_open: true
-    tty: true
-    volumes:
-      - /mnt/:/mnt
-    command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
+#   nas:
+#     image: dperson/samba
+#     container_name: samba
+#     environment:
+#       TZ: ${TZ}
+#     networks:
+#       - default
+#     ports:
+#       - 139:139
+#       - 445:445
+#     tmpfs:
+#       - /tmp
+#     restart: unless-stopped
+#     stdin_open: true
+#     tty: true
+#     volumes:
+#       - /mnt/:/mnt
+#     command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
