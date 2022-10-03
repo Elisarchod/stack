@@ -17,9 +17,9 @@ services:
     - 15082:15082
     - 1082:1080
     
-  sickchill:
+  sickchill2:
     image: ghcr.io/linuxserver/sickchill
-    container_name: sickchill
+    container_name: sickchill2
     environment:
       - PUID=1000
       - PGID=1000
