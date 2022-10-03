@@ -9,7 +9,7 @@ services:
     - UMASK_SET=022
     - WEBUI_PORT=15082
     volumes:
-    - /portainer_volumes/qbittorrent:/config
+    - port-vol/qbittorrent:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
     - 6882:6881
@@ -25,7 +25,7 @@ services:
       - PGID=1000
       - TZ=${TZ}
     volumes:
-      - /portainer_volumes/sickchill:/config
+      - port-vol/sickchill:/config
       - /var/log:/config/Logs/
       - /mnt/elements_main/torrent/sickchill:/downloads
       - /mnt/elements_main/torrent/sickchill:/tv
