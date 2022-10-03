@@ -9,7 +9,7 @@ services:
     - UMASK_SET=022
     - WEBUI_PORT=15082
     volumes:
-    - /portainer_volumes/qbittorrent/config:/config
+    - /portainer_volumes/qbittorrent:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
     - 6882:6881
