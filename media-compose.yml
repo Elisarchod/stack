@@ -12,10 +12,10 @@ services:
     - qbittorrent:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
-    - 6882:6881
-    - 6882:6881/udp
+    - 6881:6881
+    - 6881:6881/udp
     - 15080:15080
-    - 1082:1080
+    - 1080:1080
     
   sickchill:
     image: ghcr.io/linuxserver/sickchill
