@@ -47,6 +47,9 @@ networks:
     ipam:
       driver: default
       
+volumes:
+  sickchill_config:
+      
 #   nas:
 #     image: dperson/samba
 #     container_name: samba
