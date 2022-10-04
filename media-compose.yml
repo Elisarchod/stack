@@ -1,8 +1,8 @@
 version: '3.9'
 services:
-  qbittorrent2:
+  qbittorrent:
     image: linuxserver/qbittorrent
-    container_name: qbittorrent2
+    container_name: qbittorrent
     environment:
     - PUID=1000
     - PGID=1000
@@ -17,9 +17,9 @@ services:
     - 15080:15080
     - 1082:1080
     
-  sickchill2:
+  sickchill:
     image: ghcr.io/linuxserver/sickchill
-    container_name: sickchill2
+    container_name: sickchill
     environment:
       - PUID=1000
       - PGID=1000
