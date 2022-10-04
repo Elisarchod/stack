@@ -25,10 +25,17 @@ services:
       - PGID=1000
       - TZ=${TZ}
     volumes:
-      - port-vol/sickchill:/config
-      - /var/log:/config/Logs/
-      - /mnt/elements_main/torrent/sickchill:/downloads
-      - /mnt/elements_main/torrent/sickchill:/tv
+      - type: volume
+        source: sickchill
+        target: /config
+#         volume:
+#           nocopy: true
+      - type: bind
+        source: /mnt/elements_main/torrent/sickchill
+        target: /downloads
+      - type: bind
+        source: /mnt/elements_main/torrent/sickchill
+        target: /tv
     ports:
       - 15081:8081
     restart: unless-stopped
