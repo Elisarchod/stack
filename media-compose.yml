@@ -9,7 +9,7 @@ services:
     - UMASK_SET=022
     - WEBUI_PORT=15082
     volumes:
-    - /portainer_volumes/qbittorrent:/config
+    - volumes_new/qbittorrent:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
     - 6882:6881
@@ -26,7 +26,7 @@ services:
       - TZ=${TZ}
     volumes:
       - type: volume
-        source: sickchill_config
+        source: volumes_new/sickchill
         target: /config
 #         volume:
 #           nocopy: true
@@ -48,7 +48,7 @@ networks:
       driver: default
       
 volumes:
-  sickchill_config:
+  volumes_new:
       
 #   nas:
 #     image: dperson/samba
