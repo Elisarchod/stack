@@ -7,14 +7,14 @@ services:
     - PUID=1000
     - PGID=1000
     - UMASK_SET=022
-    - WEBUI_PORT=15082
+    - WEBUI_PORT=15080
     volumes:
-    - volumes_new_qbittorrent:/config
+    - qbittorrent:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
     - 6882:6881
     - 6882:6881/udp
-    - 15082:15082
+    - 15080:15080
     - 1082:1080
     
   sickchill2:
@@ -26,7 +26,7 @@ services:
       - TZ=${TZ}
     volumes:
       - type: volume
-        source: volumes_new_sickchill
+        source: sickchill
         target: /config
 #         volume:
 #           nocopy: true
@@ -48,8 +48,8 @@ networks:
       driver: default
       
 volumes:
-  volumes_new_qbittorrent:
-  volumes_new_sickchill:
+  qbittorrent:
+  sickchill:
       
 #   nas:
 #     image: dperson/samba
