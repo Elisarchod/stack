@@ -1,22 +1,6 @@
 version: '3.9'
 services:
-#   qbittorrent:
-#     image: linuxserver/qbittorrent
-#     container_name: qbittorrent
-#     environment:
-#     - PUID=1000
-#     - PGID=1000
-#     - UMASK_SET=022
-#     - WEBUI_PORT=15080
-#     volumes:
-#     - qbittorrent:/config
-#     - /mnt/elements_main/torrent:/downloads
-#     ports:
-#     - 6881:6881
-#     - 6881:6881/udp
-#     - 15080:15080
-#     - 1080:1080
-    
+
   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
@@ -28,12 +12,14 @@ services:
     volumes:
     - ./volumes/qbittorrent/config:/config
     - /mnt/elements_main/torrent:/downloads
+#     - qbittorrent:/config
     ports:
     - 6881:6881
     - 6881:6881/udp
     - 15080:15080
     - 1080:1080
-    
+    restart: unless-stopped
+
 #   sickchill:
 #     image: ghcr.io/linuxserver/sickchill
 #     container_name: sickchill
@@ -42,17 +28,9 @@ services:
 #       - PGID=1000
 #       - TZ=${TZ}
 #     volumes:
-#       - type: volume
-#         source: sickchill
-#         target: /config
-# #         volume:
-# #           nocopy: true
-#       - type: bind
-#         source: /mnt/elements_main/torrent/sickchill
-#         target: /downloads
-#       - type: bind
-#         source: /mnt/elements_main/torrent/sickchill
-#         target: /tv
+#       - sickchill:/config
+#       - /mnt/elements_main/torrent/sickchill:/downloads
+#       - mnt/elements_main/torrent/sickchill:/tv
 #     ports:
 #       - 15081:8081
 #     restart: unless-stopped
