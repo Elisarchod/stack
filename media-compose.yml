@@ -12,7 +12,7 @@ services:
     volumes:
 #     - ./volumes/qbittorrent/config:/config
     - /mnt/elements_main/torrent:/downloads
-    - qbittorrent:/config
+    - qbittorrent:/
     ports:
     - 6881:6881
     - 6881:6881/udp
