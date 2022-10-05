@@ -17,7 +17,7 @@ services:
 #     - 15080:15080
 #     - 1080:1080
     
-   qbittorrent:
+  qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
