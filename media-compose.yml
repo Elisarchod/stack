@@ -1,18 +1,17 @@
 version: '3.9'
 services:
 
-  qbittorrent2:
+  qbittorrent:
     image: linuxserver/qbittorrent
-    container_name: qbittorrent2
+    container_name: qbittorrent
     environment:
     - PUID=1000
     - PGID=1000
     - UMASK_SET=022
     - WEBUI_PORT=15080
     volumes:
-#     - ./volumes/qbittorrent/config:/config
-    - /mnt/elements_main/torrent:/downloads
     - /home/pi/stack/volumes/qbittorrent/config:/config
+    - /mnt/elements_main/torrent:/downloads
     ports:
     - 6881:6881
     - 6881:6881/udp
@@ -20,20 +19,20 @@ services:
     - 1080:1080
     restart: unless-stopped
 
-#   sickchill:
-#     image: ghcr.io/linuxserver/sickchill
-#     container_name: sickchill
-#     environment:
-#       - PUID=1000
-#       - PGID=1000
-#       - TZ=${TZ}
-#     volumes:
-#       - sickchill:/config
-#       - /mnt/elements_main/torrent/sickchill:/downloads
-#       - mnt/elements_main/torrent/sickchill:/tv
-#     ports:
-#       - 15081:8081
-#     restart: unless-stopped
+  sickchill:
+    image: ghcr.io/linuxserver/sickchill
+    container_name: sickchill
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - /home/pi/stack/volumes/sickchill/config:/config
+      - /mnt/elements_main/torrent/sickchill:/downloads
+      - mnt/elements_main/torrent/sickchill:/tv
+    ports:
+      - 8081:8081
+    restart: unless-stopped
 
 networks:
   default:
@@ -42,10 +41,7 @@ networks:
     ipam:
       driver: default
       
-volumes:
-  qbittorrent:
-  sickchill:
-      
+
 #   nas:
 #     image: dperson/samba
 #     container_name: samba
