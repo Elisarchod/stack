@@ -1,6 +1,23 @@
 version: '3.9'
 services:
-  qbittorrent:
+#   qbittorrent:
+#     image: linuxserver/qbittorrent
+#     container_name: qbittorrent
+#     environment:
+#     - PUID=1000
+#     - PGID=1000
+#     - UMASK_SET=022
+#     - WEBUI_PORT=15080
+#     volumes:
+#     - qbittorrent:/config
+#     - /mnt/elements_main/torrent:/downloads
+#     ports:
+#     - 6881:6881
+#     - 6881:6881/udp
+#     - 15080:15080
+#     - 1080:1080
+    
+   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
@@ -9,7 +26,7 @@ services:
     - UMASK_SET=022
     - WEBUI_PORT=15080
     volumes:
-    - qbittorrent:/config
+    - ./volumes/qbittorrent/config:/config
     - /mnt/elements_main/torrent:/downloads
     ports:
     - 6881:6881
