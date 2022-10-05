@@ -30,6 +30,7 @@ services:
       - /home/pi/stack/volumes/sickchill/config:/config
       - /mnt/elements_main/torrent/sickchill:/downloads
       - /mnt/elements_main/torrent/sickchill:/tv
+      - /var/log/:logs
     ports:
       - 8081:8081
     restart: unless-stopped
