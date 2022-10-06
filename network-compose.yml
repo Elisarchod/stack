@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+
+  dns:
+    container_name: unbound_dns
+    image: klutchell/unbound:latest
+    ports:
+      - 5053:53/udp
+      - 5053:53/tcp
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ./volumes/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
+    restart: unless-stopped
+    
