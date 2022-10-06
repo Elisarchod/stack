@@ -10,7 +10,7 @@ services:
     environment:
       - TZ=${TZ}
     volumes:
-      - ./volumes/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
+      - /home/pi/stack/volumes/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
     restart: unless-stopped
     
   pihole:
@@ -26,8 +26,8 @@ services:
      - WEBPASSWORD=IOtSt4ckP1Hol3
      - INTERFACE=eth0
     volumes:
-     - ./volumes/pihole/etc-pihole:/etc/pihole
-     - ./volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+     - /home/pi/stack/volumes/pihole/etc-pihole:/etc/pihole
+     - /home/pi/stack/volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
      - /var/log/pihole.log:/var/log/pihole.log
     dns:
      - 127.0.0.1
