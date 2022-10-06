@@ -39,7 +39,7 @@ services:
     image: dperson/samba
     container_name: samba
     environment:
-      TZ: ${TZ}
+      - TZ=${TZ}
     networks:
       - default
     ports:
@@ -53,6 +53,27 @@ services:
     volumes:
       - /mnt/:/mnt
     command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
+    
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - /dev/video10:/dev/video10
+      - /dev/video11:/dev/video11
+      - /dev/video12:/dev/video12
+      - /home/pi/stack/volumes/jellyfin/config:/config
+      - /mnt/elements_main/torrent/sickchill:/data/tvshows
+      - /mnt/elements_main/torrent/completed:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
     
 networks:
   default:
