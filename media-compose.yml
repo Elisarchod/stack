@@ -55,27 +55,27 @@ services:
       - /mnt/:/mnt
     command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
     
-  jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest
-    container_name: jellyfin
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=${TZ}
-    volumes:
-      - /dev/video10:/dev/video10
-      - /dev/video11:/dev/video11
-      - /dev/video12:/dev/video12
-      - /home/pi/stack/volumes/jellyfin/config:/config
-      - /var/log/jellfin:/log
-      - /mnt/elements_main/torrent/sickchill:/data/tvshows
-      - /mnt/elements_main/torrent/completed:/data/movies
-    ports:
-      - 8096:8096
-      - 8920:8920 #optional
-      - 7359:7359/udp #optional
-      - 1900:1900/udp #optional
-    restart: unless-stopped
+#   jellyfin:
+#     image: lscr.io/linuxserver/jellyfin:latest
+#     container_name: jellyfin
+#     environment:
+#       - PUID=1000
+#       - PGID=1000
+#       - TZ=${TZ}
+#     volumes:
+#       - /dev/video10:/dev/video10
+#       - /dev/video11:/dev/video11
+#       - /dev/video12:/dev/video12
+#       - /home/pi/stack/volumes/jellyfin/config:/config
+#       - /var/log/jellfin:/log
+#       - /mnt/elements_main/torrent/sickchill:/data/tvshows
+#       - /mnt/elements_main/torrent/completed:/data/movies
+#     ports:
+#       - 8096:8096
+#       - 8920:8920 #optional
+#       - 7359:7359/udp #optional
+#       - 1900:1900/udp #optional
+#     restart: unless-stopped
     
   plex:
     image: lscr.io/linuxserver/plex:latest
@@ -94,7 +94,7 @@ services:
       - 32400:32400
       - 1900:1900/udp
       - 3005:3005
-      - 5353:5353/udp
+#       - 5353:5353/udp
       - 8324:8324
       - 32410:32410/udp
       - 32412:32412/udp
