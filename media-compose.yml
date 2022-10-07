@@ -12,6 +12,7 @@ services:
     volumes:
     - /home/pi/stack/volumes/qbittorrent/config:/config
     - /mnt/elements_main/torrent:/downloads
+    - /var/log/qbittorrent:/config/qBittorrent/logs
     ports:
     - 6881:6881
     - 6881:6881/udp
@@ -66,6 +67,7 @@ services:
       - /dev/video11:/dev/video11
       - /dev/video12:/dev/video12
       - /home/pi/stack/volumes/jellyfin/config:/config
+      - /var/log/jellfin:/config/log
       - /mnt/elements_main/torrent/sickchill:/data/tvshows
       - /mnt/elements_main/torrent/completed:/data/movies
     ports:
