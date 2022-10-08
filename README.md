@@ -1,10 +1,12 @@
 # stack
 
+[portainer templates / images for example](https://github.com/xneo1/portainer_templates/blob/master/Template/template.json)
+
+[poratainer compose example](https://github.com/docker/awesome-compose/tree/master/portainer)
 
 
 
-https://github.com/docker/awesome-compose/tree/master/portainer
-
+```
 services:
   portainer:
     image: portainer/portainer-ce:alpine
@@ -19,3 +21,4 @@ services:
 
 volumes:
   portainer_data:
+```
