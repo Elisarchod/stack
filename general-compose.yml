@@ -2,20 +2,20 @@ version: '3.6'
 services:
   flask:
     container_name: flask
-    build: /services/flask/.
+    build: /home/pi//services/flask/.
     restart: unless-stopped
     ports:
       - 8084:8080
 
   csv-wrangler:
     container_name: csv-wrangler
-    build: /services/csv-wrangler/.
+    build: /home/pi//services/csv-wrangler/.
     ports:
       - 8085:8501
    
   gpt-ui-code:
     container_name: gpt-ui
-    build: /services/gpt-ui/.
+    build: /home/pi//services/gpt-ui/.
     restart: unless-stopped
     ports:
       - 8083:8080
@@ -40,9 +40,9 @@ services:
     image: b4bz/homer
     container_name: homer
     volumes:
-      - /volumes/homer/assets:/www/assets
-      - /services/flask:/www/flask
-      - /services/csv-wrangler/:/www/csv-wrangler/
+      - /home/pi/volumes/homer/assets:/www/assets
+      - /home/pi/services/flask:/www/flask
+      - /home/pi/services/csv-wrangler/:/www/csv-wrangler/
     ports:
       - 8082:8080
     user: 1000:1000
@@ -58,8 +58,8 @@ services:
       - HOME=/app
       - TZ=${TZ}
     volumes:
-      - /volumes/syncthing/config:/config
-      - /volumes/syncthing/data:/app
+      - /home/pi/volumes/syncthing/config:/config
+      - /home/pi/stack/volumes/syncthing/data:/app
     ports:
       - 8384:8384 # Web UI
       - 22000:22000/tcp # TCP file transfers
