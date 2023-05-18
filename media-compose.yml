@@ -1,12 +1,5 @@
 version: '3.9'
 services:
-
-  gpt-ui-code:
-    container_name: gpt-ui
-    build: /home/pi/stack/services/gpt-ui/.
-    restart: unless-stopped
-    ports:
-      - 8083:8080
       
   qbittorrent:
     image: linuxserver/qbittorrent

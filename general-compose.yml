@@ -2,23 +2,23 @@ version: '3.6'
 services:
   flask:
     container_name: flask
-    build: /home/pi//services/flask/.
+    build: /home/pi/stack/services/flask/.
     restart: unless-stopped
     ports:
       - 8084:8080
 
   csv-wrangler:
     container_name: csv-wrangler
-    build: /home/pi//services/csv-wrangler/.
+    build: /home/pi/stack/services/csv-wrangler/.
     ports:
       - 8085:8501
    
-  gpt-ui-code:
-    container_name: gpt-ui
-    build: /home/pi//services/gpt-ui/.
-    restart: unless-stopped
-    ports:
-      - 8083:8080
+#  gpt-ui-code:
+#    container_name: gpt-ui
+#    build: /home/pi/stack/services/gpt-ui/.
+#    restart: unless-stopped
+#    ports:
+#      - 8083:8080
 
   emulatorjs:
     image: lscr.io/linuxserver/emulatorjs:latest
