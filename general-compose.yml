@@ -10,7 +10,6 @@ services:
   csv-wrangler:
     container_name: csv-wrangler
     build: /services/csv-wrangler/.
-    restart: unless-stopped
     ports:
       - 8085:8501
    
@@ -36,7 +35,6 @@ services:
       - 3000:3000
       - 80:80
       - 4001:4001 #optional
-    restart: unless-stopped
     
   homer:
     image: b4bz/homer
