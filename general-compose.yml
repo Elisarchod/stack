@@ -2,7 +2,7 @@ version: '3.6'
 services:
   flask:
     container_name: flask
-    build: /home/pi/stack/services/flask/.
+    build: /home/pi/stack/services/flask
     restart: unless-stopped
     ports:
       - 8084:8080
