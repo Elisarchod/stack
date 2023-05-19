@@ -3,7 +3,7 @@ services:
   flask:
     container_name: flask
     build:
-      context: /home/pi/stack/services/flask
+      context: stack/services/flask/.
     restart: unless-stopped
     ports:
       - 8084:8080
