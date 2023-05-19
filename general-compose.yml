@@ -1,11 +1,11 @@
 version: '3.6'
 services:
-#  flask:
-#    container_name: flask
-#    build: /home/pi/stack/services/flask/.
-#    restart: unless-stopped
-#    ports:
-#      - 8084:8080
+  flask:
+    container_name: flask
+    build: /home/pi/stack/services/flask/.
+    restart: unless-stopped
+    ports:
+      - 8084:8080
 #
 #  csv-wrangler:
 #    container_name: csv-wrangler
