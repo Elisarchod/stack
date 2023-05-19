@@ -1,17 +1,17 @@
 version: '3.6'
 services:
-  flask:
-    container_name: flask
-    build: /home/pi/stack/services/flask/.
-    restart: unless-stopped
-    ports:
-      - 8084:8080
-
-  csv-wrangler:
-    container_name: csv-wrangler
-    build: /home/pi/stack/services/csv-wrangler/.
-    ports:
-      - 8085:8501
+#  flask:
+#    container_name: flask
+#    build: /home/pi/stack/services/flask/.
+#    restart: unless-stopped
+#    ports:
+#      - 8084:8080
+#
+#  csv-wrangler:
+#    container_name: csv-wrangler
+#    build: /home/pi/stack/services/csv-wrangler/.
+#    ports:
+#      - 8085:8501
    
 #  gpt-ui-code:
 #    container_name: gpt-ui
