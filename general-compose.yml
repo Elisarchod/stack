@@ -92,8 +92,8 @@ networks:
     driver: bridge
     ipam:
       driver: default
-  nextcloud:
-    driver: bridge
-    internal: true
-    ipam:
-      driver: default
+#  nextcloud:
+#    driver: bridge
+#    internal: true
+#    ipam:
+#      driver: default
