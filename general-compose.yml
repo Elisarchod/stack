@@ -49,43 +49,43 @@ services:
     environment:
       - INIT_ASSETS=0
       
-  syncthing:
-    image: linuxserver/syncthing:latest
-    container_name: syncthing
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - HOME=/app
-      - TZ=${TZ}
-    volumes:
-      - /home/pi/volumes/syncthing/config:/config
-      - /home/pi/stack/volumes/syncthing/data:/app
-    ports:
-      - 8384:8384 # Web UI
-      - 22000:22000/tcp # TCP file transfers
-      - 22000:22000/udp # QUIC file transfers
-      - 21027:21027/udp # Receive local discovery broadcasts
-    network_mode: host
+#  syncthing:
+#    image: linuxserver/syncthing:latest
+#    container_name: syncthing
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - HOME=/app
+#      - TZ=${TZ}
+#    volumes:
+#      - /home/pi/volumes/syncthing/config:/config
+#      - /home/pi/stack/volumes/syncthing/data:/app
+#    ports:
+#      - 8384:8384 # Web UI
+#      - 22000:22000/tcp # TCP file transfers
+#      - 22000:22000/udp # QUIC file transfers
+#      - 21027:21027/udp # Receive local discovery broadcasts
+#    network_mode: host
     
-  nextcloud:
-    container_name: nextcloud
-    image: nextcloud
-    restart: unless-stopped
-    environment:
-    - MYSQL_HOST=nextcloud_db
-    - MYSQL_PASSWORD=IOtSt4ckmySqlDbPw
-    - MYSQL_DATABASE=nextcloud
-    - MYSQL_USER=nextcloud
-    ports:
-    - 9321:80
-    volumes:
-#    - ./volumes/nextcloud/html:/var/www/html
-    - /mnt/elements_main/torrent/incomplet_test:/var/www/html
-#    depends_on:
-#    - nextcloud_db
-    networks:
-    - default
-    - nextcloud
+#  nextcloud:
+#    container_name: nextcloud
+#    image: nextcloud
+#    restart: unless-stopped
+#    environment:
+#    - MYSQL_HOST=nextcloud_db
+#    - MYSQL_PASSWORD=IOtSt4ckmySqlDbPw
+#    - MYSQL_DATABASE=nextcloud
+#    - MYSQL_USER=nextcloud
+#    ports:
+#    - 9321:80
+#    volumes:
+##    - ./volumes/nextcloud/html:/var/www/html
+#    - /mnt/elements_main/torrent/incomplet_test:/var/www/html
+##    depends_on:
+##    - nextcloud_db
+#    networks:
+#    - default
+#    - nextcloud
 
 networks:
   default:
