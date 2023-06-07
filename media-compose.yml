@@ -11,6 +11,7 @@ services:
     - WEBUI_PORT=15080
     volumes:
     - /home/pi/stack/volumes/qbittorrent/config:/config
+    - /home/pi/stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
     - /mnt/elements_main/torrent:/downloads
     - /var/log/qbittorrent:/config/qBittorrent/logs
     ports:
