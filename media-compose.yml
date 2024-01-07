@@ -9,9 +9,9 @@ services:
       - UMASK_SET=022
       - WEBUI_PORT=15080
     volumes:
-      - ./stack/volumes/qbittorrent/config:/config
-      - ./stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
-      - ./stack/volumes/torrent/downloads:/downloads
+      - /home/pie/stack/volumes/qbittorrent/config:/config
+      - /home/pie/stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
+      - /home/pie/stack/volumes/torrent/downloads:/downloads
       - ${LOG_PATH}/qbittorrent:/config/qBittorrent/logs
     ports:
       - 6881:6881
@@ -66,8 +66,8 @@ services:
       - /dev/video10:/dev/video10
       - /dev/video11:/dev/video11
       - /dev/video12:/dev/video12
-      - ./stack/volumes/jellyfin/config:/config
-      - ./stack/volumes/torrent/downloads:/data/movies
+      - /home/pie/stack/volumes/jellyfin/config:/config
+      - /home/pie/stack/volumes/torrent/downloads:/data/movies
       - ${LOG_PATH}/jellfin:/log
     ports:
       - 8096:8096
