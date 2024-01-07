@@ -12,9 +12,9 @@ services:
       - /home/pie/stack/volume/emulatorjs/config:/config
       - /home/pie/stack/volume/emulatorjs/data:/data
     ports:
-      - 3003:3000
-      - 80:80
-      - 4001:4001 #optional
+      - 7081:3000
+      - 7080:80
+      # - 4001:4001 #optional
 
 networks:
   default:
