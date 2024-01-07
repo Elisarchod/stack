@@ -22,3 +22,7 @@ services:
 volumes:
   portainer_data:
 ```
+
+
+#### Stop all images
+``` docker stop $(docker ps -q) ```
