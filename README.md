@@ -14,6 +14,8 @@ services:
     command: -H unix:///var/run/docker.sock
     ports:
       - "9000:9000"
+      - "8000:8000" # Add this line to expose Chisel server port
+      - "9443:9443" # Add this line to expose HTTPS port
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainer_data:/data"
@@ -22,3 +24,7 @@ services:
 volumes:
   portainer_data:
 ```
+
+
+#### Stop all images
+``` docker stop $(docker ps -q) ```
