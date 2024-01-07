@@ -9,15 +9,15 @@ services:
       - UMASK_SET=022
       - WEBUI_PORT=15080
     volumes:
-    - ./stack/volumes/qbittorrent/config:/config
-    - ./stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
-    - ./stack/volumes/torrent/downloads:/downloads
-    - {$LOG_PATH}/qbittorrent:/config/qBittorrent/logs
+      - ./stack/volumes/qbittorrent/config:/config
+      - ./stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
+      - ./stack/volumes/torrent/downloads:/downloads
+      - {$LOG_PATH}/qbittorrent:/config/qBittorrent/logs
     ports:
-    - 6881:6881
-    - 6881:6881/udp
-    - 15080:15080
-    - 1080:1080
+      - 6881:6881
+      - 6881:6881/udp
+      - 15080:15080
+      - 1080:1080
     restart: unless-stopped
 
   # sickchill:
