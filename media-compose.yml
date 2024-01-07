@@ -12,7 +12,7 @@ services:
       - ./stack/volumes/qbittorrent/config:/config
       - ./stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
       - ./stack/volumes/torrent/downloads:/downloads
-      - {$LOG_PATH}/qbittorrent:/config/qBittorrent/logs
+      # - {$LOG_PATH}/qbittorrent:/config/qBittorrent/logs
     ports:
       - 6881:6881
       - 6881:6881/udp
@@ -68,7 +68,7 @@ services:
       - /dev/video12:/dev/video12
       - ./stack/volumes/jellyfin/config:/config
       - ./stack/volumes/torrent/downloads:/data/movies
-      - {$LOG_PATH}/jellfin:/log
+      # - {$LOG_PATH}/jellfin:/log
     ports:
       - 8096:8096
       - 8920:8920 #optional
