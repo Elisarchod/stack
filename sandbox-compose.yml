@@ -14,7 +14,7 @@ services:
     ports:
       - 7081:3000
       - 7080:80
-      # - 4001:4001 #optional
+      - 7082:4001 #optional
 
 networks:
   default:
