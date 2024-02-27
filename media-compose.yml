@@ -81,11 +81,17 @@ services:
   syncthing:
     image: syncthing/syncthing:latest
     container_name: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
     volumes:
       - /home/pi/stack/volumes/syncthing/config:/var/syncthing/config
       - /home/pi/stack/volumes/syncthing/data:/var/syncthing/data
     ports:
       - 8333:8384
+      - 22000:22000/tcp # TCP file transfers
+      - 22000:22000/udp # QUIC file transfers
+      - 21027:21027/udp # Receive local discovery broadcasts
     restart: unless-stopped
 
 
