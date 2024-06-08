@@ -44,6 +44,7 @@ services:
       DEFAULT_HOST: pihole.yourDomain.lan
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
+      - /home/pi/stack/volumes/nginx/nginx.conf:/etc/nginx/nginx.conf
     restart: always
 
   pihole:
