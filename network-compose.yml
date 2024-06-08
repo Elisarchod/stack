@@ -76,8 +76,8 @@ services:
       # LAN hostnames for other docker containers using nginx-proxy
       - 'yourDomain.lan:192.168.1.250'
       - 'pihole pihole.yourDomain.lan:192.168.1.250'
-      - 'ghost ghost.yourDomain.lan:192.168.1.250'
-      - 'wordpress wordpress.yourDomain.lan:192.168.1.250'
+      - 'sickchill sickchill.yourDomain.lan:192.168.1.250'
+      - 'qbitorrent qbitorrent.yourDomain.lan:192.168.1.250'
     restart: always
 
 
