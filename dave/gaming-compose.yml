@@ -10,7 +10,7 @@ services:
       - SUBFOLDER=/ #optional
     volumes:
       - /home/pie/stack/volumes/emulatorjs/config:/config
-      - /home/pie/stack/volumes/emulatorjs/data:/data
+      - /mnt/elements_main/emulatorjs/data:/data
     ports:
       - 7081:3000
       - 7080:80
