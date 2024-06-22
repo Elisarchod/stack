@@ -68,6 +68,7 @@ services:
       - /dev/video11:/dev/video11
       - /dev/video12:/dev/video12
       - /home/pi/stack/volumes/jellyfin/config:/config
+      - /home/pi/stack/volumes/jellyfin/config.json:/jellyfin/jellyfin-web/config.json
       - /var/log/jellfin:/log
       - /mnt/elements_main/torrent/sickchill:/data/tvshows
       - /mnt/elements_main/torrent/completed:/data/movies
