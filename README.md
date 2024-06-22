@@ -4,7 +4,8 @@
 
 [poratainer compose example](https://github.com/docker/awesome-compose/tree/master/portainer)
 
-
+# jelly fin reset
+https://community.synology.com/enu/forum/1/post/187787
 
 ```
 services:
