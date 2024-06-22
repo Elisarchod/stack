@@ -1,0 +1,28 @@
+version: '3.6'
+services:
+  emulatorjs:
+    image: lscr.io/linuxserver/emulatorjs:latest
+    container_name: emulatorjs
+    environment:
+      - PUID=1000
+      - PGID=1000
+      # - TZ=${TZ}
+      - SUBFOLDER=/ #optional
+    volumes:
+      - /home/pie/stack/volumes/emulatorjs/config:/config
+      - /home/pie/stack/volumes/emulatorjs/data:/data
+    ports:
+      - 7081:3000
+      - 7080:80
+      - 7082:4001 #optional
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+#  nextcloud:
+#    driver: bridge
+#    internal: true
+#    ipam:
+#      driver: default

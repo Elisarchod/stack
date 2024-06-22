@@ -1,0 +1,88 @@
+version: '3.9'
+services:
+      
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=022
+      - WEBUI_PORT=15080
+    volumes:
+      - /home/pie/stack/volumes/qbittorrent/config:/config
+      - /home/pie/stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
+      - /mnt/elements_main/torrent:/downloads
+      - /var/log/qbittorrent:/config/qBittorrent/logs
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 15080:15080
+      - 1080:1080
+    restart: unless-stopped
+
+  sickchill:
+    image: ghcr.io/linuxserver/sickchill
+    container_name: sickchill
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - /home/pie/stack/volumes/sickchill/config:/config
+      - /mnt/elements_main/torrent/sickchill:/downloads
+      - /mnt/elements_main/torrent/sickchill:/tv
+      - /var/log/sickchill.log:/logs/sickchill.log
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+
+  nas:
+    image: dperson/samba
+    container_name: samba
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - 139:139
+      - 445:445
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/log/samba:/var/log/samba
+      - /mnt/:/mnt
+    command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
+    
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - /dev/video10:/dev/video10
+      - /dev/video11:/dev/video11
+      - /dev/video12:/dev/video12
+      - /home/pie/stack/volumes/jellyfin/config:/config
+      - /mnt/elements_main/torrent/completed:/data/movies
+      - /mnt/elements_main/torrent/sickchill:/data/tvshows
+      - /var/log/jellfin:/log
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+    
+networks:
+  default:
+    driver: bridge
+    attachable: true
+    ipam:
+      driver: default
+      
