@@ -23,7 +23,7 @@ services:
       TZ: ${TZ}
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
-      - /home/pi/stack/volumes/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /home/pi/git/stack/archie/src/nginx.conf:/etc/nginx/nginx.conf
     restart: always
 
   pihole:
