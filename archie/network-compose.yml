@@ -8,7 +8,7 @@ services:
       - 5053:53/udp
       - 5053:53/tcp
     environment:
-      - TZ: ${TZ}
+      TZ: ${TZ}
     volumes:
       - /home/pi/stack/volumes/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
     restart: always
