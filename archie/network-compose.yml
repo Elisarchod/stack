@@ -12,31 +12,9 @@ services:
     volumes:
       - /home/pi/stack/volumes/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
     restart: unless-stopped
-    
-  # pihole:
-  #   container_name: pihole
-  #   image: pihole/pihole:latest
-  #   ports:
-  #    - 8089:80/tcp
-  #    - 53:53/tcp
-  #    - 53:53/udp
-  #    - 67:67/udp
-  #   environment:
-  #    - TZ=${TZ}
-  #    - WEBPASSWORD=IOtSt4ckP1Hol3
-  #    - INTERFACE=eth0
-  #   volumes:
-  #    - /home/pi/stack/volumes/pihole/etc-pihole:/etc/pihole
-  #    - /home/pi/stack/volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
-  #    - /var/log/pihole.log:/var/log/pihole.log
-  #   dns:
-  #    - 127.0.0.1
-  #    - 1.1.1.1
-  #   cap_add:
-  #    - NET_ADMIN
-  #   restart: unless-stopped
 
   nginx-proxy:
+    container_name: nginx
     image: nginxproxy/nginx-proxy
     ports:
       - '80:80'
@@ -48,6 +26,7 @@ services:
     restart: always
 
   pihole:
+    container_name: pihole
     image: pihole/pihole:latest
     ports:
       - '53:53/tcp'
@@ -69,7 +48,6 @@ services:
       INTERFACE: eth0
     dns:
       - 127.0.0.1
-      - 1.1.1.1
     extra_hosts:
       # Resolve to nothing domains (terminate connection)
       - 'nw2master.bioware.com nwn2.master.gamespy.com:0.0.0.0'
