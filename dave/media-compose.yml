@@ -55,7 +55,7 @@ services:
     volumes:
       - /var/log/samba:/var/log/samba
       - /mnt/:/mnt
-    command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
+    command: '-s "daves;/mnt;yes;no;no" -u "dave;123456" -w "WORKGROUP" '
     
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
