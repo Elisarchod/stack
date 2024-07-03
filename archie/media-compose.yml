@@ -54,7 +54,7 @@ services:
     tty: true
     volumes:
       - /mnt/:/mnt
-    command: '-s "Bobs;/mnt;yes;no;no" -u "bob;123456" -w "WORKGROUP" '
+    command: '-s "archies;/mnt;yes;no;no" -u "archie;123456" -w "WORKGROUP" '
     
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
