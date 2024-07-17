@@ -27,5 +27,8 @@ volumes:
 ```
 
 
-#### Stop all images
+#### stop all images
 ``` docker stop $(docker ps -q) ```
+
+#### init stack
+``` docker compose -f llm-compose.yml --stack-name llm-stack up -d  ```
