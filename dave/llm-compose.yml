@@ -20,7 +20,7 @@ services:
     depends_on:
       - ollama-model
     environment:
-      - TOKEN=6105650473:AAFtQbx81mKl2YV8SxD6K5UCVb1c5JeYBRg
+      - TOKEN=6835135062:AAF_EewdFXeladMPmmVFqVeHoiAHIs6qnBs
       - OLLAMA_BASE_URL=192.168.1.205
 
   ollama-webui:
