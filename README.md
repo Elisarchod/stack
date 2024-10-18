@@ -41,3 +41,6 @@ lsblk
 sudu mkdir /mnt/elements_main
 sudo nano /etc/fstab
 UUID=<your-drive-uuid> /mnt/mydrive ext4 defaults,uid=1000,gid=1000,rw 0 2
+
+
+
