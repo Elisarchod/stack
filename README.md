@@ -40,4 +40,4 @@ https://www.perplexity.ai/search/premenet-mount-drive-on-linux-BtU2U5YISPqy0lSfi
 lsblk
 sudu mkdir /mnt/elements_main
 sudo nano /etc/fstab
-UUID=<your-drive-uuid> /mnt/elements_main ntfs defaults 0 2
+UUID=<your-drive-uuid> /mnt/mydrive ext4 defaults,uid=1000,gid=1000,rw 0 2
