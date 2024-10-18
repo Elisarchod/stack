@@ -32,3 +32,12 @@ volumes:
 
 #### init stack
 ``` docker compose -f llm-compose.yml --stack-name llm-stack up -d  ```
+
+
+### mount drive
+https://www.perplexity.ai/search/premenet-mount-drive-on-linux-BtU2U5YISPqy0lSfiuntJw
+
+lsblk
+sudu mkdir /mnt/elements_main
+sudo nano /etc/fstab
+UUID=<your-drive-uuid> /mnt/elements_main ntfs defaults 0 2
