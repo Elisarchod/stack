@@ -33,6 +33,11 @@ volumes:
 #### init stack
 ``` docker compose -f llm-compose.yml --stack-name llm-stack up -d  ```
 
+#### restart stack
+```find . -name "*.yml" -exec docker-compose -f {} up -d --force-recreate --build \;```
+
+#### full restart stack with volumes and network
+```find . -name "*.yml" -exec docker-compose -f {} down \; -exec docker-compose -f {} up -d --build \;```
 
 ### mount drive
 https://www.perplexity.ai/search/premenet-mount-drive-on-linux-BtU2U5YISPqy0lSfiuntJw
