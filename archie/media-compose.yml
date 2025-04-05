@@ -2,13 +2,14 @@ version: '3.9'
 services:
       
   qbittorrent:
-    image: linuxserver/qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     environment:
     - PUID=1000
     - PGID=1000
-    - UMASK_SET=022
+#     - UMASK_SET=022
     - WEBUI_PORT=15080
+    - TORRENTING_PORT=6881
     volumes:
     - /home/pi/stack/volumes/qbittorrent/config:/config
     - /home/pi/stack/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
