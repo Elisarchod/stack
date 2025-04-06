@@ -30,6 +30,9 @@ volumes:
 #### stop all images
 ``` docker stop $(docker ps -q) ```
 
+#### remove all images
+```docker rmi -f $(docker images -q)```
+
 #### init stack
 ``` docker compose -f llm-compose.yml --stack-name llm-stack up -d  ```
 
@@ -38,6 +41,8 @@ volumes:
 
 #### full restart stack with volumes and network
 ```find . -name "*.yml" -exec docker-compose -f {} down \; -exec docker-compose -f {} up -d --build \;```
+better than above code - currrent dir files only
+```find . -maxdepth 1 -name "*.yml" -exec sh -c 'docker-compose -f "$1" down && docker-compose -f "$1" up -d --build' _ {} \;```
 
 ### mount drive
 https://www.perplexity.ai/search/premenet-mount-drive-on-linux-BtU2U5YISPqy0lSfiuntJw
