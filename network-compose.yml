@@ -15,27 +15,30 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     ports:
-     - 8089:80/tcp
+     - 80:80/tcp
      - 53:53/tcp
      - 53:53/udp
      - 67:67/udp
+     - 123:123/udp
+     - 443:443/tcp
     environment:
      - TZ=$TZ
-     - WEBPASSWORD=$PIHOLE_PASSWORD
-     - INTERFACE=eth0
-     
+     - FTLCONF_webserver_api_password='admin'
+     - FTLCONF_dns_interface=eth0
+     - FTLCONF_dns_listeningMode=all
+     - FTLCONF_dns_upstreams='127.0.0.1#5053;8.8.8.8'
     volumes:
-     - $STACK_PATH/volumes/pihole/etc-pihole:/etc/pihole
-     - $STACK_PATH/volumes/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
-#     - /home/pie/stack/application/config/pihole_custom.list:/etc/pihole/custom.list:ro
-     - /var/log/pihole/log:/var/log/pihole.log
-     - /var/log/pihole/log:/var/log/pihole/FTL.log
+      - $STACK_PATH/pihole_x:/etc/pihole
     dns:
-     - 127.0.0.1
+     - $HOST_IP
+#    net: 
+#      - host
     cap_add:
      - NET_ADMIN
+#     - SYS_TIME
+##     - SYS_NICE
+ #    - NET_ADMIN
     restart: unless-stopped
-    
 
 networks:
   default:
