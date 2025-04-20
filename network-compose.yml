@@ -4,12 +4,12 @@ services:
     container_name: unbound_dns
     image: klutchell/unbound:latest
     ports:
-      - 5053:53/udp
-      - 5053:53/tcp
+      - 5335:53/udp
+      - 5335:53/tcp
     environment:
       TZ: $TZ
     volumes:
-      - $STACK_PATH/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
+      - $STACK_PATH/config/unbound/unbound.conf:/etc/unbound/unbound.conf.d
     restart: always
 
   pihole:
@@ -26,7 +26,7 @@ services:
      - TZ=$TZ
      - FTLCONF_dns_interface=eth0
      - FTLCONF_dns_listeningMode=all
-     - FTLCONF_dns_upstreams='127.0.0.1#5053'
+#     - FTLCONF_dns_upstreams=127.0.0.1#5335
      #     - FTLCONF_webserver_api_password='admin'
 #    volumes:
 #      - $STACK_PATH/pihole:/etc/pihole
