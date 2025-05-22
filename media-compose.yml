@@ -11,7 +11,7 @@ services:
     volumes:
     - $STACK_PATH/qbittorrent/config:/config
     - $STACK_PATH/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
-    - /mnt/elements_main/torrent:/downloads
+    - $HDD_PATH/torrent:/downloads
     - /var/log/qbittorrent:/config/qBittorrent/logs
     ports:
     - 6881:6881
@@ -29,9 +29,9 @@ services:
       - TZ=$TZ
     volumes:
       - $STACK_PATH/sickchill/config:/config
-      - /mnt/elements_main/torrent/sickchill:/downloads
-      - /mnt/elements_main/torrent/sickchill:/tv
-      - /mnt/elements_main/torrent/sickchill:/data
+      - $HDD_PATH/torrent/sickchill:/downloads
+      - $HDD_PATH/torrent/sickchill:/tv
+      - $HDD_PATH/torrent/sickchill:/data
       - /var/log/sickchill.log:/logs/sickchill.log
 
     ports:
@@ -73,8 +73,8 @@ services:
       - /dev/video12:/dev/video12
       - $STACK_PATH/jellyfin/config:/config
       - /var/log/jellfin:/log
-      - /mnt/elements_main/torrent/sickchill:/data/tvshows
-      - /mnt/elements_main/torrent/completed:/data/movies
+      - $HDD_PATH/torrent/sickchill:/data/tvshows
+      - $HDD_PATH/torrent/completed:/data/movies
     ports:
       - 8096:8096
       - 8920:8920 #optional
