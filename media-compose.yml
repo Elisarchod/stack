@@ -9,8 +9,8 @@ services:
     - UMASK_SET=022
     - WEBUI_PORT=15080
     volumes:
-    - $STACK_PATH/qbittorrent/config:/config
-    - $STACK_PATH/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
+    - $STACK_PATH/volumes/qbittorrent/config:/config
+    - $STACK_PATH/volumes/qbittorrent/cache:/app/sickchill/sickchill/gui/slick/cache
     - $HDD_PATH/torrent:/downloads
     - /var/log/qbittorrent:/config/qBittorrent/logs
     ports:
@@ -28,7 +28,7 @@ services:
       - PGID=1000
       - TZ=$TZ
     volumes:
-      - $STACK_PATH/sickchill/config:/config
+      - $STACK_PATH/volumes/sickchill/config:/config
       - $HDD_PATH/torrent/sickchill:/downloads
       - $HDD_PATH/torrent/sickchill:/tv
       - $HDD_PATH/torrent/sickchill:/data
@@ -71,7 +71,7 @@ services:
       - /dev/video10:/dev/video10
       - /dev/video11:/dev/video11
       - /dev/video12:/dev/video12
-      - $STACK_PATH/jellyfin/config:/config
+      - $STACK_PATH/volumes/jellyfin/config:/config
       - /var/log/jellfin:/log
       - $HDD_PATH/torrent/sickchill:/data/tvshows
       - $HDD_PATH/torrent/completed:/data/movies

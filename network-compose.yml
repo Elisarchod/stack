@@ -8,7 +8,7 @@ services:
     environment:
       TZ: $TZ
     volumes:
-      - $STACK_PATH/unbound/unbound.conf.d:/etc/unbound/unbound.conf.d
+      - $STACK_PATH/config/unbound/unbound.conf:/etc/unbound/unbound.conf.d
     restart: always
 
   pihole:
@@ -26,6 +26,7 @@ services:
      - FTLCONF_dns_interface=eth0
      - FTLCONF_dns_listeningMode=all
 #     - FTLCONF_dns_upstreams=8.8.8.8
+#     - FTLCONF_dns_upstreams=127.0.0.1#5335
 #    volumes:
 #      - $STACK_PATH/pihole:/etc/pihole
     depends_on:
