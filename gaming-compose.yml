@@ -1,0 +1,51 @@
+version: '3.6'
+services:
+  emulatorjs:
+    image: lscr.io/linuxserver/emulatorjs:latest
+    container_name: emulatorjs
+    environment:
+      - PUID=1000
+      - PGID=1000
+      # - TZ=${TZ}
+      - SUBFOLDER=/ #optional
+    volumes:
+      - $STACK_PATH/volumes/emulatorjs/config:/config
+      - $HDD_PATH/emulatorjs/data:/data
+    ports:
+      - 7080:80
+      - 7081:3000
+      - 7082:4001 #optional
+
+  minecraft:
+    image: itzg/minecraft-server
+    container_name: minecraft-server
+    ports:
+      - "25565:25565"  # Exposes the default Minecraft port
+    environment:
+      EULA: "TRUE"      # You must agree to the Minecraft EULA
+      TYPE: "PAPER"     # Server type (e.g., VANILLA, SPIGOT, PAPER, FORGE). Paper is often good for performance.
+      VERSION: "LATEST" # Or specify a version like "1.20.4"
+      MEMORY: "1G"      # Allocate memory to the server. Adjust based on your Raspberry Pi model.
+      # --- Optional but Recommended Settings ---
+      MOTD: "My Awesome Raspberry Pi Minecraft Server!" # Message of the day
+      # DIFFICULTY: "normal"
+      # MAX_PLAYERS: "10"
+      # ONLINE_MODE: "TRUE" # Set to "FALSE" if you only want to play on your local network without Mojang authentication (not recommended for public servers)
+      # OPS: "YourMinecraftUsername" # Automatically OP a player
+      # --- Raspberry Pi Specific Optimizations (can be helpful) ---
+      # JVM_XX_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1"
+    volumes:
+      - $STACK_PATH/volumes/minecraft-data:/data # Persists Minecraft world data on your Raspberry Pi
+    restart: unless-stopped
+
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+#  nextcloud:
+#    driver: bridge
+#    internal: true
+#    ipam:
+#      driver: default
